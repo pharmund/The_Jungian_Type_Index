@@ -1,3 +1,4 @@
+"""Проверка TextAnalyzer"""
 import unittest
 
 from text_analyzer import TextAnalyzer

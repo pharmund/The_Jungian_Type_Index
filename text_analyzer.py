@@ -1,24 +1,23 @@
-class TextAnalyzer:
-    """Класс, который подсчитывает, сколько слов из входного текста попало под какие категории"""
+class AspectDict:
+    """Анализатор текста"""
 
-    def __init__(self):
-        self.group_classification: dict = {}
+    def __init__(self, aspect_words):
+        self.aspect_dict: dict = {}
+        self.new_aspect_dict: dict = {}
 
-    def add_group_str(self, name: str, group: str):
-        self.add_group_list(name, group.split(', '))
+        for word in aspect_words:
+            self.aspect_dict[word] = 0
 
-    def add_group_list(self, name: str, group: list):
-        self.group_classification[name] = group
-
-    def analyze(self, text: str) -> dict:
-        result = {}
-        for name, group in self.group_classification.items():
-            result[name] = self.__analyze_group(group, text)
-        return result
-
-    def __analyze_group(self, group: list, text: str) -> int:
-        match = 0
-        for word in group:
+    def analyze(self, text) -> dict:
+        for word in self.aspect_dict:
             if word in text:
-                match += 1
-        return match
+                self.aspect_dict[word] = text.count(word)
+
+        for word in self.aspect_dict:
+            if self.aspect_dict[word] != 0:
+                self.new_aspect_dict[word] = self.aspect_dict[word]
+        
+        return self.new_aspect_dict
+
+
+

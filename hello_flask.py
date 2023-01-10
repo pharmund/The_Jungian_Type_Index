@@ -5,9 +5,11 @@ import aspect_words
 app = Flask(__name__)
 app.config['JSON_AS_ASCII'] = False
 
+
 @app.route('/')
 def hello() -> str:
     return 'Hello from Flask'
+
 
 @app.route('/search4', methods=['POST'])
 def do_search() -> dict:
@@ -41,9 +43,10 @@ def do_search() -> dict:
 
     return final_dict
 
+
 @app.route('/entry') 
 def entry_page() -> 'html': 
- return render_template('entry.html', 
- the_title='Welcome to search4letters on the web!')
+    return render_template('entry.html',
+    the_title='Welcome to search4letters on the web!')
 
 app.run(debug=True)

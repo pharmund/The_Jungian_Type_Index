@@ -15,6 +15,7 @@ def hello() -> str:
 def do_search() -> dict:
 
     text = request.form['phrase']
+    title = 'Here are your results:'
 
     # text = input("Введите текст: ")
     # text = text.lower()
@@ -32,16 +33,34 @@ def do_search() -> dict:
     """ Создадим финальный словарь """
 
     final_dict = {}
-    final_dict['SE'] = SE.analyze(text)
-    final_dict['SI'] = SI.analyze(text)
-    final_dict['TE'] = TE.analyze(text)
-    final_dict['TI'] = TI.analyze(text)
-    final_dict['FE'] = FE.analyze(text)
-    final_dict['FI'] = FI.analyze(text)
-    final_dict['NE'] = NE.analyze(text)
-    final_dict['NI'] = NI.analyze(text)
 
-    return final_dict
+    first_dict = {}
+    first_dict['SE'] = sum(SE.analyze(text).values())
+    first_dict['SI'] = sum(SI.analyze(text).values())
+    first_dict['TE'] = sum(TE.analyze(text).values())
+    first_dict['TI'] = sum(TI.analyze(text).values())
+    first_dict['FE'] = sum(FE.analyze(text).values())
+    first_dict['FI'] = sum(FI.analyze(text).values())
+    first_dict['NE'] = sum(NE.analyze(text).values())
+    first_dict['NI'] = sum(NI.analyze(text).values())
+
+    # final_dict['SE'] = SE.analyze(text)
+    # final_dict['SI'] = SI.analyze(text)
+    # final_dict['TE'] = TE.analyze(text)
+    # final_dict['TI'] = TI.analyze(text)
+    # final_dict['FE'] = FE.analyze(text)
+    # final_dict['FI'] = FI.analyze(text)
+    # final_dict['NE'] = NE.analyze(text)
+    # final_dict['NI'] = NI.analyze(text)
+
+
+    # results = final_dict
+    results = first_dict
+
+    return render_template('results.html',
+                           the_phrase=text,
+                           the_title=title,
+                           the_results=results,)
 
 
 @app.route('/entry') 

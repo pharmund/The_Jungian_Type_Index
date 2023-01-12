@@ -2,14 +2,14 @@ from flask import Flask, request, render_template
 from text_analyzer import AspectDict
 import aspect_words
 
-app = Flask(__name__)
-app.config['JSON_AS_ASCII'] = False
+application = Flask(__name__)
+application.config['JSON_AS_ASCII'] = False
 
 
 
 
 
-@app.route('/search4', methods=['POST'])
+@application.route('/search4', methods=['POST'])
 def do_search() -> dict:
 
     text = request.form['phrase']
@@ -61,12 +61,12 @@ def do_search() -> dict:
                            the_results=results,
                            the_results2=results2,)
 
-@app.route('/')
-@app.route('/entry') 
+@application.route('/')
+@application.route('/entry') 
 def entry_page() -> 'html': 
     return render_template('entry.html',
     the_title='Welcome to search4letters on the web!')
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    application.run(host='0.0.0.0')

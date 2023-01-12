@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2fb9f7c0-4900-4c11-9dc3-08c6294ff4be" name="Changes" comment="">
+    <list default="true" id="2fb9f7c0-4900-4c11-9dc3-08c6294ff4be" name="Changes" comment="небольшие изменения">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hello_flask.py" beforeDir="false" afterPath="$PROJECT_DIR$/hello_flask.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/entry.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/entry.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/results.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/results.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -30,6 +29,9 @@
         <option name="url" value="https://github.com/pharmund/The_Jungian_Type_Index.git" />
       </UrlAndAccount>
     </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2K9FCIz49lRAkvDPuvHVY6YVqh1" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -61,10 +63,36 @@
       <updated>1673378763652</updated>
       <workItem from="1673378768666" duration="177000" />
       <workItem from="1673379802877" duration="1712000" />
+      <workItem from="1673532416634" duration="2178000" />
     </task>
+    <task id="LOCAL-00001" summary="добавил форму вывода">
+      <created>1673460327503</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1673460327503</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="добавил форму вывода" />
+    <MESSAGE value="небольшие добавления" />
+    <MESSAGE value="небольшие изменения" />
+    <option name="LAST_COMMIT_MESSAGE" value="небольшие изменения" />
   </component>
 </project>

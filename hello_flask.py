@@ -6,9 +6,7 @@ app = Flask(__name__)
 app.config['JSON_AS_ASCII'] = False
 
 
-@app.route('/')
-def hello() -> str:
-    return 'Hello from Flask'
+
 
 
 @app.route('/search4', methods=['POST'])
@@ -44,28 +42,31 @@ def do_search() -> dict:
     first_dict['NE'] = sum(NE.analyze(text).values())
     first_dict['NI'] = sum(NI.analyze(text).values())
 
-    # final_dict['SE'] = SE.analyze(text)
-    # final_dict['SI'] = SI.analyze(text)
-    # final_dict['TE'] = TE.analyze(text)
-    # final_dict['TI'] = TI.analyze(text)
-    # final_dict['FE'] = FE.analyze(text)
-    # final_dict['FI'] = FI.analyze(text)
-    # final_dict['NE'] = NE.analyze(text)
-    # final_dict['NI'] = NI.analyze(text)
+    final_dict['SE'] = SE.analyze(text)
+    final_dict['SI'] = SI.analyze(text)
+    final_dict['TE'] = TE.analyze(text)
+    final_dict['TI'] = TI.analyze(text)
+    final_dict['FE'] = FE.analyze(text)
+    final_dict['FI'] = FI.analyze(text)
+    final_dict['NE'] = NE.analyze(text)
+    final_dict['NI'] = NI.analyze(text)
 
 
-    # results = final_dict
+    results2 = final_dict
     results = first_dict
 
     return render_template('results.html',
                            the_phrase=text,
                            the_title=title,
-                           the_results=results,)
+                           the_results=results,
+                           the_results2=results2,)
 
-
+@app.route('/')
 @app.route('/entry') 
 def entry_page() -> 'html': 
     return render_template('entry.html',
     the_title='Welcome to search4letters on the web!')
 
-app.run(debug=True)
+
+if __name__ == '__main__':
+    app.run(debug=True)

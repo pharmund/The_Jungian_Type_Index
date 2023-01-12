@@ -47,6 +47,6 @@ def do_search() -> dict:
 @app.route('/entry') 
 def entry_page() -> 'html': 
     return render_template('entry.html',
-    the_title='Welcome to search4letters on the web!')
+    the_title='Welcome to search4words on the web!')
 
 app.run(debug=True)

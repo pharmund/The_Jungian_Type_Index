@@ -1,6 +1,10 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, Markup
 from text_analyzer import AspectDict
 import aspect_words
+import pandas as pd
+import numpy as np
+
+
 
 application = Flask(__name__)
 application.config['JSON_AS_ASCII'] = False
@@ -52,8 +56,17 @@ def do_search() -> dict:
     final_dict['NI'] = NI.analyze(text)
 
 
-    results2 = final_dict
     results = first_dict
+    results2 = final_dict
+
+    df = pd.DataFrame.from_dict(results2)
+
+    bar_labels = list(results)
+    # print (bar_labels)
+    bar_values = list(results.values())
+    return render_template('results.html', title='', max=max(bar_values), labels=bar_labels, values=bar_values,
+                            the_results2=results2,
+                            )
 
     return render_template('results.html',
                            the_phrase=text,
@@ -69,4 +82,5 @@ def entry_page() -> 'html':
 
 
 if __name__ == '__main__':
-    application.run(host='0.0.0.0')
+    # application.run(host='0.0.0.0')
+    application.run(debug=True)

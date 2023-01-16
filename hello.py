@@ -1,8 +1,8 @@
 from flask import Flask, request, render_template, Markup
 from text_analyzer import AspectDict
 import aspect_words
-import pandas as pd
-import numpy as np
+# import pandas as pd
+# import numpy as np
 
 
 
@@ -59,7 +59,7 @@ def do_search() -> dict:
     results = first_dict
     results2 = final_dict
 
-    df = pd.DataFrame.from_dict(results2)
+    # df = pd.DataFrame.from_dict(results2)
 
     bar_labels = list(results)
     # print (bar_labels)

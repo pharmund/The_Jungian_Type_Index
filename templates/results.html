@@ -13,7 +13,7 @@
 <p>The following results are returned:</p>
 <!--<p>When "{{the_phrase }}" is search for "{{ the_letters }}", the following -->
 <!--results are returned:</p>-->
-<h3>{{ the_results }}</h3>
+
 
 <center>
     <h1>{{ title }}</h1>
@@ -65,8 +65,19 @@
 
     </script>
   </center>
+ 
+  <h4>{{ the_results8 }}</h4>
 
-  <h3>{{ the_results2 }}</h3>
-
+  <center>
+  <table>
+    {% for t in table %}
+        <tr>
+        {% for i in t %}
+            <td>{{ i }}</td>
+        {% endfor %}
+        </tr>
+    {% endfor %}
+  </table>
+  </center>
 
 {% endblock %}

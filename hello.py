@@ -4,9 +4,18 @@ import aspect_words
 from itertools import chain
 from itertools import zip_longest
 
+import re, os, codecs, sys, string, operator
+import operator
+
 
 application = Flask(__name__)
 application.config['JSON_AS_ASCII'] = False
+
+@application.route('/')
+@application.route('/entry') 
+def entry_page() -> 'html': 
+    return render_template('entry.html',
+    the_title='Welcome to search4words on the web!')
 
 
 @application.route('/search4', methods=['POST'])
@@ -114,11 +123,32 @@ def do_search() -> dict:
                             table = new_result_list,
                             )
 
-@application.route('/')
-@application.route('/entry') 
-def entry_page() -> 'html': 
-    return render_template('entry.html',
-    the_title='Welcome to search4words on the web!')
+
+
+@application.route('/count_words', methods=['POST'])
+def count() -> 'html':
+    frequency = {}
+
+    text = request.form['phrase']
+
+
+    match_pattern = re.findall(r'\b[а-я]{3,15}\b', text)
+
+    for word in match_pattern:
+        count = frequency.get(word,0)
+        frequency[word] = count + 1
+
+    frequency_list = frequency.keys()
+    dict_aspect = {}
+    sorted_dict_aspect = {}
+
+    for words in frequency_list:
+        if frequency[words]>0:
+            dict_aspect[words] = text.count(words)
+            sorted_dict_aspect = sorted(dict_aspect.items(), key=operator.itemgetter(1), reverse=True)
+
+    sorted_dict_aspect = list(map(list, sorted_dict_aspect))
+    return render_template('results2.html', table=sorted_dict_aspect,)
 
 
 if __name__ == '__main__':

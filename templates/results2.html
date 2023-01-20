@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<p>The following results are returned:</p>
+<table>
+    {% for t in table %}
+        <tr>
+        {% for i in t %}
+            <td>{{ i }}</td>
+        {% endfor %}
+        </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

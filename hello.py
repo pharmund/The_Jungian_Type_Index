@@ -1,11 +1,16 @@
-from flask import Flask, request, render_template, Markup
+from flask import Flask, request, render_template
 from text_analyzer import AspectDict
 import aspect_words
 from itertools import chain
 from itertools import zip_longest
 
-import re, os, codecs, sys, string, operator
+import re, operator
 import operator
+
+import nltk
+nltk.download('stopwords')
+from nltk.corpus import stopwords
+
 
 
 application = Flask(__name__)
@@ -131,8 +136,8 @@ def count() -> 'html':
 
     text = request.form['phrase']
 
-
     match_pattern = re.findall(r'\b[а-я]{3,15}\b', text)
+    match_pattern = [word for word in match_pattern if word not in stopwords.words('russian')]
 
     for word in match_pattern:
         count = frequency.get(word,0)
@@ -143,12 +148,17 @@ def count() -> 'html':
     sorted_dict_aspect = {}
 
     for words in frequency_list:
-        if frequency[words]>0:
+        if frequency[words]>1:
             dict_aspect[words] = text.count(words)
             sorted_dict_aspect = sorted(dict_aspect.items(), key=operator.itemgetter(1), reverse=True)
 
+    
     sorted_dict_aspect = list(map(list, sorted_dict_aspect))
-    return render_template('results2.html', table=sorted_dict_aspect,)
+
+    return render_template('results2.html', table=sorted_dict_aspect,
+                        #    the_result=stopword,
+                        #    the_result2=sorted_dict_aspect,
+                           )
 
 
 if __name__ == '__main__':

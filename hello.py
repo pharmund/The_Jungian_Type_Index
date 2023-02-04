@@ -11,6 +11,8 @@ import nltk
 nltk.download('stopwords')
 from nltk.corpus import stopwords
 
+from log_request import log_request
+
 
 
 application = Flask(__name__)
@@ -121,7 +123,7 @@ def do_search() -> dict:
 
  
 
-
+    log_request(text, new_result_list)
     return render_template('results.html', title='', max=max(bar_values), labels=bar_labels, values=bar_values,
                             # # the_results8=sorted_NI,
                             # the_results8=new_result_list,

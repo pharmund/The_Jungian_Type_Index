@@ -6,16 +6,19 @@ def youtube_parser(url):
     print(match.group(7) if match and len(match.group(7)) == 11 else False)
     return match.group(7) if match and len(match.group(7)) == 11 else False
 
-transcript_list = YouTubeTranscriptApi.list_transcripts('sNeHToxGAJo')
-transcript = transcript_list.find_transcript(['en'])
-translated_transcript = transcript.translate('ru')
+def get_text(link):
+    transcript_list = YouTubeTranscriptApi.list_transcripts(link)
+    transcript = transcript_list.find_transcript(['en'])
+    translated_transcript = transcript.translate('ru')
 
 
-file = translated_transcript.fetch()
-result = ''
+    file = translated_transcript.fetch()
+    result = ''
 
-for transcript in file:
-    result += (transcript['text'])
-    result += ' '
+    for transcript in file:
+        result += (transcript['text'])
+        result += ' '
 
-print(result)
+    return result
+
+print(get_text('sNeHToxGAJo'))

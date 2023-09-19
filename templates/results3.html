@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<h2>{{ the_title }}</h2>
+
+<!-- <p>You submitted the following data:</p> -->
+<!-- <table>
+<tr><td>Phrase:</td><td>{{ the_phrase }}</td></tr>
+<!--<tr><td>Letters:</td><td>{{ the_letters }}</td></tr>-->
+<!-- </table> -->
+
+<p>The following results are returned:</p>
+<!--<p>When "{{the_phrase }}" is search for "{{ the_letters }}", the following -->
+<!--results are returned:</p>-->
+
+
+<center>
+    <h1>{{ title }}</h1>
+  </center>
+  <center>
+    <canvas id="chart" width="600" height="400"></canvas>
+    <script>
+      // bar chart data
+      var barData = {
+        labels : [
+          {% for item in labels %}
+           "{{ item }}",
+          {% endfor %}
+	],
+
+        datasets : [{
+          fillColor: "rgba(151,187,205,0.2)",
+        //   fillColor: "rgba(0, 0, 0, 1)",
+        //   strokeColor: "rgba(151,187,205,1)",
+          strokeColor: "rgba(0, 0, 0, 1)",
+          pointColor: "rgba(151,187,205,1)",
+          data : [
+            {% for item in values %}
+               "{{ item }}",
+              {% endfor %}
+	    ]
+          }
+        ]
+      }
+
+     // get bar chart canvas
+     var mychart = document.getElementById("chart").getContext("2d");
+
+       steps = 10
+       max = {{max}}
+
+     // draw bar chart
+     new Chart(mychart).Bar(barData, {
+       scaleOverride: true,
+       scaleSteps: steps,
+       scaleStepWidth: Math.ceil(max / steps),
+       scaleStartValue: 0,
+       scaleShowVerticalLines: true,
+       scaleShowGridLines : true,
+       barShowStroke : true,
+       scaleShowLabels: true
+       }
+     );
+
+    </script>
+  </center>
+
+  <h4>{{ the_results8 }}</h4>
+
+  <center>
+  <table>
+    {% for t in table %}
+        <tr>
+        {% for i in t %}
+            <td>{{ i }}</td>
+        {% endfor %}
+        </tr>
+    {% endfor %}
+  </table>
+  </center>
+  <p>SE - Власть, влияние, ресурсы </p>
+  <p>SI - Восприятие органами чувств</p>
+  <p>TE - Продуктивность, Техническое мышление</p>
+  <p>TI - Структурное мышление</p>
+  <p>FE - Восприятие эмоциональных состояний людей, животных</p>
+  <p>FI - Родственные</p>
+  <p>NE - Новшества, скрытый смысл, проницательность, сознание</p>
+  <p>NI - Время</p>
+
+
+{% endblock %}

@@ -12,6 +12,7 @@ nltk.download('stopwords')
 from nltk.corpus import stopwords
 
 from log_request import log_request
+import youtube_parser
 
 
 
@@ -164,7 +165,11 @@ def count() -> 'html':
 
 @application.route('/youtube_search', methods=['POST'])
 def do_search2() -> dict:
-    text = request.form['phrase']
+
+    videoid = youtube_parser.youtube_parser(request.form['phrase'])
+    text = youtube_parser.get_text(videoid)
+
+    #text = request.form['phrase']
     title = 'Here are your results:'
 
     SE = AspectDict(aspect_words.se)
@@ -266,5 +271,5 @@ def do_search2() -> dict:
 
 
 if __name__ == '__main__':
-    # application.run(host='0.0.0.0')
-    application.run(debug=False)
+    application.run(host='0.0.0.0')
+    #application.run(debug=False)

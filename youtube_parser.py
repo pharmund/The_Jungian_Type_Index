@@ -21,4 +21,4 @@ def get_text(link):
 
     return result
 
-print(get_text('sNeHToxGAJo'))
+#print(get_text('sNeHToxGAJo'))

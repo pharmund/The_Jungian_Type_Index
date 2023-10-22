@@ -18,5 +18,5 @@ FI - Родственные связи
 NE - Новшества, скрытый смысл, проницательность, сознание  
 NI - Время  
 
-![alt text] (https://github.com/pharmund/The_Jungian_Type_Index/blob/main/images/eb41585a-7026-48ba-a0f3-bbab001b220a.jpeg)
-![alt text] (https://github.com/pharmund/The_Jungian_Type_Index/blob/main/images/a64c9de0-10b9-4e5e-8cb4-c35e7f5ecf73.jpeg)
+![](https://github.com/pharmund/The_Jungian_Type_Index/blob/main/images/eb41585a-7026-48ba-a0f3-bbab001b220a.jpeg)
+![](https://github.com/pharmund/The_Jungian_Type_Index/blob/main/images/a64c9de0-10b9-4e5e-8cb4-c35e7f5ecf73.jpeg)
